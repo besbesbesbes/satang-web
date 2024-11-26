@@ -1,21 +1,74 @@
 import { useEffect, useState } from "react";
 import { icons } from "../icons/mainIcon";
+import { useNavigate } from "react-router-dom";
+import useUserStore from "../stores/userStore";
+import { loginApi } from "../apis/auth-api";
+import useMainStore from "../stores/mainStore";
 
 function Login() {
+  const [fallingIcons, setFallingIcons] = useState([]);
+  const navigate = useNavigate();
+  const setCurPage = useMainStore((state) => state.setCurPage);
+  const setToken = useUserStore((state) => state.setToken);
+  const setUser = useUserStore((state) => state.setUser);
+  const [input, setInput] = useState({
+    username: "besbesbes",
+    password: "123456789",
+  });
+  const [errMsg, setErrMsg] = useState("");
+  const [isShowErrMsg, setIsShowErrMsg] = useState(false);
   const {
-    satangIcon: SatangIcon,
-    loginIcon: LoginIcon,
-    addTranIcon: AddTranIcon,
-    transIcon: TransIcon,
-    acctIcon: AcctIcon,
-    debtIcon: DebtIcon,
-    reportIcon: ReportIcon,
-    settingIcon: SettingIcon,
+    SatangIcon,
+    LoginIcon,
+    AddTranIcon,
+    TransIcon,
+    AcctIcon,
+    DebtIcon,
+    ReportIcon,
+    SettingIcon,
   } = icons;
 
-  const [fallingIcons, setFallingIcons] = useState([]);
+  const hdlLogin = async (e) => {
+    e.preventDefault();
+    try {
+      // validate
+      if (!input.username.trim() || !input.password.trim()) {
+        hdlError("Please fill username and password!");
+        return;
+      }
+      // call api
+      const body = { username: input.username, password: input.password };
+      const result = await loginApi(body);
+      if (!result?.data?.token) {
+        hdlError("Please contact administor!");
+        return;
+      }
+      setToken(result.data.token);
+      setUser(result.data.userData);
+      navigate(0);
+    } catch (err) {
+      //   console.log(err?.response?.data?.error || err.message);
+      console.log(err);
+      hdlError(err?.response?.data?.error || err.message);
+    } finally {
+      setInput({
+        username: "",
+        password: "",
+      });
+    }
+  };
 
-  // Function to generate random positions and random icons for the falling elements
+  const hdlChangeInput = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const hdlError = (msg) => {
+    setErrMsg(msg);
+    setIsShowErrMsg(true);
+    setTimeout(() => {
+      setIsShowErrMsg(false);
+    }, 2000);
+  };
+
   const generateFallingIcons = () => {
     const iconCount = 20; // Number of icons to fall
     const iconsArray = [];
@@ -45,20 +98,14 @@ function Login() {
     setFallingIcons(iconsArray);
   };
 
-  // Trigger the falling icon animation when component is mounted
   useEffect(() => {
     generateFallingIcons();
   }, []);
 
-  const hdlLogin = (e) => {
-    e.preventDefault();
-    console.log("first");
-  };
-
   return (
     <div className="w-full h-screen bg-prim-02 flex flex-col relative">
       {/* Main Content */}
-      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px] bg-prim-06 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative">
+      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px] bg-prim-06 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative transition-all duration-300">
         {/* logo */}
         <div className="flex items-center">
           <SatangIcon className="w-[30px] text-text-l p-1 bg-acct-06 rounded-full absolute" />
@@ -67,8 +114,8 @@ function Login() {
           </div>
         </div>
         <div className="text-xs font-bold flex flex-col justify-center items-center text-prim-03">
-          <p>Minimal Effort, Maximum Control</p>
-          <p>Your Wallet, Simplified</p>
+          <p>Minimal effort, maximum control</p>
+          <p>your wallet, simplified</p>
         </div>
         {/* form */}
         <form
@@ -78,11 +125,27 @@ function Login() {
           <input
             type="text"
             className="w-full border h-[30px] rounded-full focus:outline-none px-3"
+            placeholder="Username or email"
+            name="username"
+            value={input.username}
+            onChange={hdlChangeInput}
           />
           <input
             type="password"
             className="w-full border h-[30px] rounded-full focus:outline-none px-3"
+            placeholder="Password"
+            name="password"
+            value={input.password}
+            onChange={hdlChangeInput}
           />
+          {/* errMsg */}
+          <p
+            className={`text-acct-07 transition-all duration-300 opacity-0 ${
+              isShowErrMsg ? "opacity-100 translate-y-0" : "-translate-y-2"
+            }`}
+          >
+            {errMsg}
+          </p>
           <button className="px-16 font-bold text-text-l rounded-full h-[30px] bg-acct-06 flex items-center gap-1  hover:scale-105 transition-all duration-300">
             <LoginIcon className="w-[20px] h-[20px]" />
             <p>Login</p>
@@ -109,7 +172,7 @@ function Login() {
       </div>
 
       {/* Custom styles for falling icons */}
-      <style jsx>{`
+      <style>{`
         .falling-icon {
           position: absolute;
           top: -50px;

@@ -1,4 +1,4 @@
-export function satangIcon(props) {
+export function SatangIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -16,7 +16,7 @@ export function satangIcon(props) {
     </svg>
   );
 }
-export function addTranIcon(props) {
+export function AddTranIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -34,7 +34,7 @@ export function addTranIcon(props) {
     </svg>
   );
 }
-export function transIcon(props) {
+export function TransIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -52,7 +52,7 @@ export function transIcon(props) {
     </svg>
   );
 }
-export function acctIcon(props) {
+export function AcctIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ export function acctIcon(props) {
     </svg>
   );
 }
-export function debtIcon(props) {
+export function DebtIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -88,7 +88,7 @@ export function debtIcon(props) {
     </svg>
   );
 }
-export function reportIcon(props) {
+export function ReportIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ export function reportIcon(props) {
     </svg>
   );
 }
-export function settingIcon(props) {
+export function SettingIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -126,7 +126,7 @@ export function settingIcon(props) {
     </svg>
   );
 }
-export function loginIcon(props) {
+export function LoginIcon(props) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -144,13 +144,32 @@ export function loginIcon(props) {
     </svg>
   );
 }
+export function AddIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 5v14m-7-7h14"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 export const icons = {
-  loginIcon,
-  satangIcon,
-  addTranIcon,
-  transIcon,
-  acctIcon,
-  debtIcon,
-  reportIcon,
-  settingIcon,
+  LoginIcon,
+  SatangIcon,
+  AddTranIcon,
+  TransIcon,
+  AcctIcon,
+  DebtIcon,
+  ReportIcon,
+  SettingIcon,
+  AddIcon,
 };

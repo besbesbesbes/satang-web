@@ -32,6 +32,7 @@ function MenuBox({ hdlPageChange, pageIdx, txt, curPage, icon: Icon }) {
 function Footer() {
   const curPage = useMainStore((state) => state.curPage);
   const setCurPage = useMainStore((state) => state.setCurPage);
+  const { AddIcon } = icons;
   const hdlPageChange = (pageIndex) => {
     setCurPage(pageIndex);
   };
@@ -40,49 +41,69 @@ function Footer() {
     consoleLog("useEffect Footer");
   }, [curPage]);
   return (
-    <div className="w-full h-[40px] bg-prim-02 fixed bottom-0 text-text-l text-xs grid grid-cols-6 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
-      <MenuBox
+    <div className="w-full h-[40px] bg-prim-02 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
+      {/* <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={0}
         txt="New"
         curPage={curPage}
-        icon={icons.addTranIcon}
-      />
+        icon={icons.AddTranIcon}
+      /> */}
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={1}
         txt="Transactions"
         curPage={curPage}
-        icon={icons.transIcon}
+        icon={icons.TransIcon}
       />
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={2}
         txt="Accounts"
         curPage={curPage}
-        icon={icons.acctIcon}
+        icon={icons.AcctIcon}
       />
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={3}
         txt="Debtors"
         curPage={curPage}
-        icon={icons.debtIcon}
+        icon={icons.DebtIcon}
       />
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={4}
         txt="Reports"
         curPage={curPage}
-        icon={icons.reportIcon}
+        icon={icons.ReportIcon}
       />
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={5}
         txt="Setting"
         curPage={curPage}
-        icon={icons.settingIcon}
+        icon={icons.SettingIcon}
       />
+      {/* addButton */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 bottom-[45px] cursor-pointer hover:scale-105 transition-all duration-300"
+        onClick={() => hdlPageChange(0)}
+      >
+        <AnimatePresence>
+          {curPage === 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className=" w-fit h-[30px] p-2 bg-acct-06  rounded-full flex items-center justify-center"
+            >
+              <AddIcon className="w-[25px] h-[25px] font-bold" />
+              <p className="text-lg font-bold px-1">New Record</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

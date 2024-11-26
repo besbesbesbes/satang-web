@@ -11,8 +11,8 @@ function AddTran() {
     consoleLog("useEffect AddTran");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-05 absolute">
-      <p className="py-[50px] bg-prim-06">AddTran</p>
+    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute">
+      <p className="py-[50px] bg-prim-6">AddTran</p>
     </div>
   );
 }

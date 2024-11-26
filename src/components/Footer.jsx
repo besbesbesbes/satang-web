@@ -17,7 +17,7 @@ function MenuBox({ hdlPageChange, pageIdx, txt, curPage, icon: Icon }) {
         {isActive && (
           <motion.div
             layoutId="bg-highlight"
-            className="absolute inset-0 bg-acct-06 z-[-1]"
+            className="absolute inset-0 bg-acct-6 z-[-1]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -41,7 +41,7 @@ function Footer() {
     consoleLog("useEffect Footer");
   }, [curPage]);
   return (
-    <div className="w-full h-[40px] bg-prim-02 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
+    <div className="w-full h-[40px] bg-prim-2 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
       {/* <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={0}
@@ -96,7 +96,7 @@ function Footer() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 0 }}
               transition={{ duration: 0.3 }}
-              className=" w-fit h-[30px] p-2 bg-acct-06  rounded-full flex items-center justify-center"
+              className=" w-fit h-[30px] p-2 bg-acct-6  rounded-full flex items-center justify-center"
             >
               <AddIcon className="w-[25px] h-[25px] font-bold" />
               <p className="text-lg font-bold px-1">New Record</p>

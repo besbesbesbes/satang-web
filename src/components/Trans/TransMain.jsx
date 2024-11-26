@@ -1,29 +1,53 @@
+import Tag from "../common/Tag";
+import TransMainDetail from "./TransMainDetail";
+
 function TransMain() {
   return (
-    <div className="w-full flex-grow bg-prim-06 overflow-y-auto relative pb-[40px]">
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-06">Test</p>
-      <p className="py-5 bg-prim-03">Test</p>
+    <div className="w-full flex-grow bg-prim-6 overflow-y-auto relative pb-[40px]">
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <TransMainDetail />
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-6">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
+      <p className="py-5 bg-prim-3">Test</p>
     </div>
   );
 }

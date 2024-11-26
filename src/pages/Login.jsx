@@ -103,17 +103,17 @@ function Login() {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-prim-02 flex flex-col relative">
+    <div className="w-full h-screen bg-prim-2 flex flex-col relative">
       {/* Main Content */}
-      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px] bg-prim-06 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative transition-all duration-300">
+      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px] bg-prim-6 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative transition-all duration-300">
         {/* logo */}
         <div className="flex items-center">
-          <SatangIcon className="w-[30px] text-text-l p-1 bg-acct-06 rounded-full absolute" />
-          <div className="border border-acct-06 p-1 rounded-full font-bold text-acct-06 pl-[30px]">
+          <SatangIcon className="w-[30px] text-text-l p-1 bg-acct-6 rounded-full absolute" />
+          <div className="border border-acct-6 p-1 rounded-full font-bold text-acct-6 pl-[30px]">
             Satang
           </div>
         </div>
-        <div className="text-xs font-bold flex flex-col justify-center items-center text-prim-03">
+        <div className="text-xs font-bold flex flex-col justify-center items-center text-prim-3">
           <p>Minimal effort, maximum control</p>
           <p>your wallet, simplified</p>
         </div>
@@ -140,13 +140,13 @@ function Login() {
           />
           {/* errMsg */}
           <p
-            className={`text-acct-07 transition-all duration-300 opacity-0 ${
+            className={`text-acct-7 transition-all duration-300 opacity-0 ${
               isShowErrMsg ? "opacity-100 translate-y-0" : "-translate-y-2"
             }`}
           >
             {errMsg}
           </p>
-          <button className="px-16 font-bold text-text-l rounded-full h-[30px] bg-acct-06 flex items-center gap-1  hover:scale-105 transition-all duration-300">
+          <button className="px-16 font-bold text-text-l rounded-full h-[30px] bg-acct-6 flex items-center gap-1  hover:scale-105 transition-all duration-300">
             <LoginIcon className="w-[20px] h-[20px]" />
             <p>Login</p>
           </button>
@@ -165,7 +165,7 @@ function Login() {
               animationDuration: icon.animationDuration,
             }}
           >
-            <icon.Icon className="w-[30px] h-[30px] text-prim-03" />{" "}
+            <icon.Icon className="w-[30px] h-[30px] text-prim-3" />{" "}
             {/* Dynamic Icon */}
           </div>
         ))}

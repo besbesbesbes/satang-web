@@ -99,7 +99,7 @@ function Footer() {
               className=" w-fit h-[30px] p-2 bg-acct-6  rounded-full flex items-center justify-center"
             >
               <AddIcon className="w-[25px] h-[25px] font-bold" />
-              <p className="text-lg font-bold px-1">New Record</p>
+              <p className="text-lg font-bold px-1">New</p>
             </motion.div>
           )}
         </AnimatePresence>

@@ -180,6 +180,7 @@ export function TripIcon(props) {
     </svg>
   );
 }
+
 export const icons = {
   LoginIcon,
   SatangIcon,

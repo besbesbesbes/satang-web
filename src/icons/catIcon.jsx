@@ -991,7 +991,7 @@ export function Icon49(props) {
     </svg>
   );
 }
-function Icon50(props) {
+export function Icon50(props) {
   return (
     <svg
       viewBox="0 0 24 24"

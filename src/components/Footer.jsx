@@ -41,14 +41,14 @@ function Footer() {
     consoleLog("useEffect Footer");
   }, [curPage]);
   return (
-    <div className="w-full h-[40px] bg-prim-2 fixed bottom-0 text-text-l text-xs grid grid-cols-7 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
-      <MenuBox
+    <div className="w-full h-[40px] bg-prim-2 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
+      {/* <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={0}
         txt="New"
         curPage={curPage}
         icon={icons.AddTranIcon}
-      />
+      /> */}
       <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={1}
@@ -84,13 +84,13 @@ function Footer() {
         curPage={curPage}
         icon={icons.ReportIcon}
       />
-      <MenuBox
+      {/* <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={6}
         txt="Setting"
         curPage={curPage}
         icon={icons.SettingIcon}
-      />
+      /> */}
       {/* addButton */}
       <div
         className="absolute left-1/2 -translate-x-1/2 bottom-[45px] cursor-pointer hover:scale-105 transition-all duration-300"

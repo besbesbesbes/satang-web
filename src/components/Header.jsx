@@ -3,6 +3,7 @@ import useUserStore from "../stores/userStore";
 import { SatangIcon } from "../icons/mainIcon";
 import { useEffect } from "react";
 import consoleLog from "../utils/consoleLog";
+import { useNavigate } from "react-router-dom";
 const pageName = [
   "New Transaction",
   "Transactions",
@@ -14,6 +15,7 @@ const pageName = [
 ];
 
 function Header() {
+  const navigate = useNavigate();
   const curPage = useMainStore((state) => state.curPage);
   const setCurPage = useMainStore((state) => state.setCurPage);
   const user = useUserStore((state) => state.user);
@@ -25,7 +27,10 @@ function Header() {
   }, [curPage]);
   return (
     <div className="w-full h-[40px] px-1 bg-prim-2 font-bold fixed top-0 flex gap-2 text-text-l justify-between items-center z-10 shadow-[0_5px_5px_rgba(0,0,0,0.1)]">
-      <div className="w-[30px] h-[30px] p-1 bg-acct-6 rounded-full flex justify-center items-center">
+      <div
+        className="w-[30px] h-[30px] p-1 bg-acct-6 rounded-full flex justify-center items-center"
+        onClick={() => navigate(0)}
+      >
         <SatangIcon className="text-text-l w-[30px] h-[30px]" />
       </div>
       <p className="flex-1 text-center">{pageName[curPage]}</p>

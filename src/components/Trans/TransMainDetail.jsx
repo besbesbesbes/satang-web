@@ -16,6 +16,15 @@ function TransMainDetail() {
         <Tag icon="Icon27" txt="bb" color="7" isShowTxt={isShowTxt} />
         <Tag icon="Icon26" txt="ccc" color="2" isShowTxt={isShowTxt} />
         <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
+        <Tag icon="Icon1" txt="Test3" color="13" isShowTxt={isShowTxt} />
       </div>
     </div>
   );

@@ -22,7 +22,6 @@ function Satang() {
   useEffect(() => {
     consoleLog("useEffect Stang");
     setCurPage(user.startPage);
-    navigate("/");
   }, []);
   return (
     <div className="w-full h-screen relative overflow-hidden">

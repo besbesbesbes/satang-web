@@ -45,10 +45,10 @@ function Login() {
       }
       setToken(result.data.token);
       setUser(result.data.userData);
-      navigate(0);
+      setCurPage(result.data.userData.startPage);
+      // navigate(0);
     } catch (err) {
-      //   console.log(err?.response?.data?.error || err.message);
-      console.log(err);
+      console.log(err?.response?.data?.error || err.message);
       hdlError(err?.response?.data?.error || err.message);
     } finally {
       setInput({

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const useMainStore = create((set) => ({
   isShowSatangLog: true, //Open log
-  curPage: 1,
+  curPage: null,
   setCurPage: (val) => set({ curPage: val }),
 }));
 

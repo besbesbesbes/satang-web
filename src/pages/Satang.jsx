@@ -8,10 +8,22 @@ import Debt from "../components/Debt/Debt";
 import Report from "../components/Report/Report";
 import Setting from "../components/Setting/Setting";
 import Trips from "../components/Trips/Trips";
+import { useEffect } from "react";
+import consoleLog from "../utils/consoleLog";
+import useUserStore from "../stores/userStore";
+import { useNavigate } from "react-router-dom";
 
 function Satang() {
+  const navigate = useNavigate();
   const curPage = useMainStore((state) => state.curPage);
+  const setCurPage = useMainStore((state) => state.setCurPage);
+  const user = useUserStore((state) => state.user);
 
+  useEffect(() => {
+    consoleLog("useEffect Stang");
+    setCurPage(user.startPage);
+    navigate("/");
+  }, []);
   return (
     <div className="w-full h-screen relative overflow-hidden">
       {/* header */}

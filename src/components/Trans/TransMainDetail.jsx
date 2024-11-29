@@ -57,7 +57,7 @@ function TransMainDetail({ tran }) {
 
   return (
     <div
-      className="w-full min-h-[30px] px-1 bg-prim-6 flex items-center cursor-pointer my-1 rounded-full"
+      className="w-full min-h-[30px] px-1 bg-prim-6 flex items-center cursor-pointer my-1 rounded-full shadow-sm"
       onClick={hdlShowDetail}
     >
       <div className="w-full flex items-center">

@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import useMainStore from "../../stores/mainStore";
 import consoleLog from "../../utils/consoleLog";
 
-function Report() {
+function Trips() {
   const curPage = useMainStore((state) => state.curPage);
   useEffect(() => {
-    if (curPage !== 5) {
+    if (curPage !== 4) {
       return;
     }
-    consoleLog("useEffect Report");
+    consoleLog("useEffect Trips");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[500%]">
-      <p>Report</p>
+    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[400%]">
+      <p>Trips</p>
     </div>
   );
 }
 
-export default Report;
+export default Trips;

@@ -8,16 +8,17 @@ const pageName = [
   "Transactions",
   "Accounts",
   "Debtors",
+  "Trips",
   "Reports",
   "Setting",
 ];
 
 function Header() {
   const curPage = useMainStore((state) => state.curPage);
+  const setCurPage = useMainStore((state) => state.setCurPage);
   const user = useUserStore((state) => state.user);
-  const hdlLogout = () => {
-    localStorage.clear();
-    window.location.href = "/";
+  const hdlPageChange = (pageIndex) => {
+    setCurPage(pageIndex);
   };
   useEffect(() => {
     consoleLog("useEffect Header");
@@ -32,7 +33,7 @@ function Header() {
         src={user.profilePic}
         alt=""
         className="w-[30px] h-[30px] bg-prim-1 rounded-full object-cover cursor-pointer"
-        onClick={hdlLogout}
+        onClick={() => hdlPageChange(6)}
       />
     </div>
   );

@@ -7,6 +7,7 @@ import Acct from "../components/Acct/Acct";
 import Debt from "../components/Debt/Debt";
 import Report from "../components/Report/Report";
 import Setting from "../components/Setting/Setting";
+import Trips from "../components/Trips/Trips";
 
 function Satang() {
   const curPage = useMainStore((state) => state.curPage);
@@ -26,6 +27,7 @@ function Satang() {
         <Trans />
         <Acct />
         <Debt />
+        <Trips />
         <Report />
         <Setting />
       </div>

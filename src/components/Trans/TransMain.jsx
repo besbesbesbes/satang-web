@@ -20,8 +20,9 @@ function TransMain({ trans }) {
         return (
           <div key={tran.id}>
             {showDate && (
-              <div className="px-1 font-bold mt-1 text-text-d text-opacity-50">
-                {tranDate}
+              <div className="w-full px-1 font-bold mt-1 text-text-d text-opacity-50 flex justify-between items-center">
+                <div>{format(tranDate, "MMM-yy")}</div>
+                <div>{format(tranDate, "EEE-dd")}</div>
               </div>
             )}
             <TransMainDetail tran={tran} />

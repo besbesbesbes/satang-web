@@ -41,7 +41,7 @@ function Footer() {
     consoleLog("useEffect Footer");
   }, [curPage]);
   return (
-    <div className="w-full h-[40px] bg-prim-2 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
+    <div className="w-full h-[40px] bg-gradient-to-b from-prim-2 to-prim-1 fixed bottom-0 text-text-l text-xs grid grid-cols-5 z-10 shadow-[0_-5px_5px_rgba(0,0,0,0.1)]">
       {/* <MenuBox
         hdlPageChange={hdlPageChange}
         pageIdx={0}

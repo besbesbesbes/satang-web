@@ -103,9 +103,9 @@ function Login() {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-prim-2 flex flex-col relative">
+    <div className="w-full h-screen bg-gradient-to-b from-prim-1 to-prim-3 flex flex-col relative">
       {/* Main Content */}
-      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px] bg-prim-6 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative transition-all duration-300">
+      <div className="min-w-[300px] min-h-[100px] m-auto rounded-[16px]  bg-prim-6 shadow-xl items-center flex flex-col p-5 translate-y-[-100px] gap-2 border z-10 relative transition-all duration-300">
         {/* logo */}
         <div className="flex items-center">
           <SatangIcon className="w-[30px] text-text-l p-1 bg-acct-6 rounded-full absolute" />

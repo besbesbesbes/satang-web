@@ -26,7 +26,7 @@ function Header() {
     consoleLog("useEffect Header");
   }, [curPage]);
   return (
-    <div className="w-full h-[40px] px-1 bg-prim-2 font-bold fixed top-0 flex gap-2 text-text-l justify-between items-center z-10 shadow-[0_5px_5px_rgba(0,0,0,0.1)]">
+    <div className="w-full h-[40px] px-1 bg-gradient-to-b from-prim-1 to-prim-2 font-bold fixed top-0 flex gap-2 text-text-l justify-between items-center z-10 shadow-[0_5px_5px_rgba(0,0,0,0.1)]">
       <div
         className="w-[30px] h-[30px] p-1 bg-acct-6 rounded-full flex justify-center items-center"
         onClick={() => navigate(0)}

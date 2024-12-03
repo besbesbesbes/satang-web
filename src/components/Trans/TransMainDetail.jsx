@@ -32,7 +32,8 @@ function TransMainDetail({ tran }) {
           icon={`Icon${el?.cat?.icon}`}
           color={el?.cat?.color}
           txt={el?.cat?.name}
-          isShowTxt={isShowTxt}
+          isShowTxt={true}
+          isOutline={true}
         />
       )}
     </div>

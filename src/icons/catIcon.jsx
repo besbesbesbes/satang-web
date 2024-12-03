@@ -1,3 +1,39 @@
+export function EditIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 20h9M3 20h1.675c.489 0 .733 0 .963-.055a2 2 0 00.579-.24c.201-.123.374-.296.72-.642L19.5 6.5a2.121 2.121 0 10-3-3L3.937 16.063c-.346.346-.519.519-.642.72-.11.18-.19.375-.24.579-.055.23-.055.475-.055.964V20z"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+export function DeleteIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M16 6v-.8c0-1.12 0-1.68-.218-2.108a2 2 0 00-.874-.874C14.48 2 13.92 2 12.8 2h-1.6c-1.12 0-1.68 0-2.108.218a2 2 0 00-.874.874C8 3.52 8 4.08 8 5.2V6m2 5.5v5m4-5v5M3 6h18m-2 0v11.2c0 1.68 0 2.52-.327 3.162a3 3 0 01-1.311 1.311C16.72 22 15.88 22 14.2 22H9.8c-1.68 0-2.52 0-3.162-.327a3 3 0 01-1.311-1.311C5 19.72 5 18.88 5 17.2V6"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 export function AllIcon(props) {
   return (
     <svg
@@ -3010,6 +3046,8 @@ export function Icon160(props) {
   );
 }
 export const catIcons = {
+  EditIcon,
+  DeleteIcon,
   AllIcon,
   IncomeIcon,
   ExpenseIcon,

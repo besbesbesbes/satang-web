@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Tag from "../common/Tag";
+import { motion, AnimatePresence } from "framer-motion";
 
 function TransMainDetail({ tran }) {
   const [isShowTxt, setIsShowTxt] = useState(false);
+  const [isShowDetail, setIsShowDetail] = useState(false);
 
   const hdlShowDetail = () => {
     setIsShowTxt(!isShowTxt);
+    setIsShowDetail(!isShowDetail);
   };
 
   const typeMapping = {
@@ -25,7 +28,7 @@ function TransMainDetail({ tran }) {
         icon={`Icon${el?.acct?.icon}`}
         color={el?.acct?.color}
         txt={el?.acct?.name}
-        isShowTxt={isShowTxt}
+        isShowTxt={false}
       />
       {el?.cat && (
         <Tag
@@ -57,25 +60,35 @@ function TransMainDetail({ tran }) {
   };
 
   return (
-    <div
-      className="w-full min-h-[30px] px-1 bg-prim-6 flex items-center cursor-pointer my-1 rounded-full shadow-sm"
-      onClick={hdlShowDetail}
-    >
-      <div className="w-full flex items-center">
-        <div className="w-full flex flex-wrap ">
-          <Tag icon={icon} txt={txt} color={color} isShowTxt={isShowTxt} />
-          {renderTransSub}
-        </div>
-        <div className="min-w-[140px] flex justify-between px-1 font-bold">
-          <div className="text-acct-2">
-            {formatNumber(tran.transSubIsInTrue, "plus")}
+    <AnimatePresence initial={false}>
+      <motion.div
+        initial={{ height: 33, opacity: 0 }}
+        animate={
+          isShowDetail
+            ? { height: 100, opacity: 1 }
+            : { height: 33, opacity: 1 }
+        }
+        exit={{ height: 0, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="w-full px-1 bg-prim-6 flex items-start cursor-pointer my-1 rounded-[16px] shadow-sm"
+        onClick={hdlShowDetail}
+      >
+        <div className="w-full flex items-center">
+          <div className="w-full flex flex-wrap">
+            <Tag icon={icon} txt={txt} color={color} isShowTxt={false} />
+            {renderTransSub}
           </div>
-          <div className="text-acct-7">
-            {formatNumber(tran.transSubIsInFalse, "minus")}
+          <div className="min-w-[140px] flex justify-between px-1 font-bold">
+            <div className="text-acct-2">
+              {formatNumber(tran.transSubIsInTrue, "plus")}
+            </div>
+            <div className="text-acct-7">
+              {formatNumber(tran.transSubIsInFalse, "minus")}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 

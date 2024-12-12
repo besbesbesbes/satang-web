@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 import Tag from "../common/Tag";
 import { motion, AnimatePresence } from "framer-motion";
+import TransMainDetailSub from "./TransMainDetailSub";
+import formatNumber from "../../utils/formatNumber";
 
 function TransMainDetail({ tran }) {
   const [isShowTxt, setIsShowTxt] = useState(false);
@@ -40,15 +42,6 @@ function TransMainDetail({ tran }) {
       )}
     </div>
   ));
-
-  const formatNumber = (value, type) => {
-    if (value === 0) return "";
-    const absValue = Math.abs(value).toLocaleString("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-    return type === "minus" ? `-${absValue}` : `+${absValue}`;
-  };
 
   const formatDateTime = (dateString) => {
     const date = new Date(dateString);
@@ -93,24 +86,41 @@ function TransMainDetail({ tran }) {
               <hr className="w-full mt-[2px] border-t border-prim-4" />
               <div className="w-full flex items-center gap-1 justify-between">
                 <Tag icon={icon} txt={txt} color={color} isShowTxt={true} />
-                <div className="text-prim-1 text-opacity-50 font-bold">
+                <div className="text-text-d text-opacity-50 font-bold">
                   {formatDateTime(tran.time)}
-                </div>
-                {/* button edit and delete */}
-                <div className="flex text-text-l">
-                  <Tag icon="EditIcon" txt="Edit" color={6} isShowTxt={false} />
-                  <Tag
-                    icon="DeleteIcon"
-                    txt="Delete"
-                    color={7}
-                    isShowTxt={false}
-                  />
                 </div>
               </div>
               {/* transSub */}
               {tran?.TransSub.map((el, idx) => (
-                <div>{JSON.stringify(el, null, 2)}</div>
+                <div key={idx} className="w-full">
+                  <TransMainDetailSub transSub={el} />
+                </div>
               ))}
+              {/* memo area */}
+              <div className="w-full">
+                <hr className="w-full mt-[2px] border-t border-prim-4" />
+                <div className="w-full flex">
+                  {/* memo */}
+                  <div className="w-full px-2 py-1">
+                    <p>{tran?.memo}</p>
+                  </div>
+                  {/* button */}
+                  <div className="flex text-text-l self-end">
+                    <Tag
+                      icon="EditIcon"
+                      txt="Edit"
+                      color={6}
+                      isShowTxt={false}
+                    />
+                    <Tag
+                      icon="DeleteIcon"
+                      txt="Delete"
+                      color={7}
+                      isShowTxt={false}
+                    />
+                  </div>
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

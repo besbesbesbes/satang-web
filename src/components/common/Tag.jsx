@@ -2,15 +2,25 @@ import { motion, AnimatePresence } from "framer-motion";
 import { catIcons } from "../../icons/catIcon";
 
 function Tag(prop) {
-  const { icon, txt, color, isShowTxt = true, isOutline = false } = prop;
+  const {
+    icon,
+    txt,
+    color,
+    isShowTxt = true,
+    isOutline = false,
+    isBorder = true,
+    isShadow = true,
+  } = prop;
   const Icon = icon ? catIcons[icon] : null;
 
   return (
     <div
-      className={`bg-acct-${color} h-[25px] mx-[1px] min-w-[25px] text-text-l rounded-full flex justify-center items-center my-1 
+      className={`bg-acct-${color}  w-fit h-[25px] mx-[1px] min-w-[25px] text-text-l rounded-full flex justify-center items-center my-1 
       ${isShowTxt && "px-2"} ${
         isOutline && `bg-prim-6 border border-acct-${color}`
-      } flex-shrink-0 shadow-sm`}
+      } flex-shrink-0 ${!isBorder && "border-none"}  ${
+        isShadow && "shadow-sm"
+      }`}
     >
       {Icon && (
         <Icon

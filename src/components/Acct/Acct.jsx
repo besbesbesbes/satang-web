@@ -11,7 +11,7 @@ function Acct() {
     consoleLog("useEffect Acct");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[200%]">
+    <div className="w-full h-[calc(100svh-80px)] bg-prim-5 absolute translate-x-[200%]">
       <p>Acct</p>
     </div>
   );

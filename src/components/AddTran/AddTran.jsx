@@ -11,8 +11,13 @@ function AddTran() {
     consoleLog("useEffect AddTran");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute">
-      <p className="py-[50px] bg-prim-6">AddTran</p>
+    <div className="w-full h-[calc(100svh-80px)] bg-prim-5 absolute flex flex-col justify-between">
+      {/* detail */}
+      <div className="h-full flex justify-end items-end">Top</div>
+      {/* input area */}
+      <div className="w-full h-[200px] bg-prim-1 flex justify-end items-end">
+        Bottom
+      </div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ function Report() {
     consoleLog("useEffect Report");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[500%]">
+    <div className="w-full h-[calc(100svh-80px)] bg-prim-5 absolute translate-x-[500%]">
       <p>Report</p>
     </div>
   );

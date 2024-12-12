@@ -29,7 +29,7 @@ function Satang() {
       <Header />
       {/* main */}
       <div
-        className="w-full h-[calc(100vh-80px)] mt-[40px] bg-slate-100 m-auto relative flex flex-col transition-transform duration-500 "
+        className="w-full h-[calc(100svh-80px)] mt-[40px] bg-slate-100 m-auto relative flex flex-col transition-transform duration-500"
         style={{
           transform: `translateX(-${curPage * window.innerWidth}px)`,
         }}

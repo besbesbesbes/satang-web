@@ -11,7 +11,7 @@ function Debt() {
     consoleLog("useEffect Debt");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[300%]">
+    <div className="w-full h-[calc(100svh-80px)] bg-prim-5 absolute translate-x-[300%]">
       <p>Debt</p>
     </div>
   );

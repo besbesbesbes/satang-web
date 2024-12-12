@@ -11,7 +11,7 @@ function Trips() {
     consoleLog("useEffect Trips");
   }, [curPage]);
   return (
-    <div className="w-full h-[calc(100vh-80px)] bg-prim-5 absolute translate-x-[400%]">
+    <div className="w-full h-[calc(100svh-80px)] bg-prim-5 absolute translate-x-[400%]">
       <p>Trips</p>
     </div>
   );

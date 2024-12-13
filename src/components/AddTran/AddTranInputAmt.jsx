@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ txt, color = "4", className }) => (
+const Button = ({ txt, color = "5", className }) => (
   <div
     className={`rounded-[16px] bg-prim-${color} flex justify-center items-center font-bold ${className}`}
   >
@@ -10,7 +10,7 @@ const Button = ({ txt, color = "4", className }) => (
 
 function AddTranInputAmt() {
   return (
-    <div className="w-full h-[200px] bg-prim-5 grid grid-cols-4 grid-rows-4 gap-1 p-1">
+    <div className="w-full h-[200px] bg-prim-6 grid grid-cols-4 grid-rows-4 gap-1 p-1 ">
       <Button txt="1" />
       <Button txt="2" />
       <Button txt="3" />
@@ -22,7 +22,9 @@ function AddTranInputAmt() {
       <Button txt="7" />
       <Button txt="8" />
       <Button txt="9" />
-      <Button txt="Split" color="3" className="text-text-l" />
+      <div className="rounded-[16px] bg-acct-2 text-text-l flex justify-center items-center font-bold">
+        Split
+      </div>
       <Button txt="0" />
       <Button txt="00" />
       <Button txt="000" />

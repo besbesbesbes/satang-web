@@ -13,3 +13,11 @@ body {
   height: 100%;
   overflow: hidden;
 }
+::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in WebKit-based browsers (Chrome, Safari) */
+}
+
+.scroll-container {
+  -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer 10+ */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}

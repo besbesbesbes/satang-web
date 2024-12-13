@@ -4,6 +4,7 @@ import AddTranInputAmt from "./AddTranInputAmt";
 import AddTranInputCat from "./AddTranInputCat";
 import AddTranInputAcct from "./AddTranInputAcct";
 import AddTranInputTrip from "./AddTranInputTrip";
+import AddTranInputTime from "./AddTranInputTime";
 
 function AddTranInput({ activeInput, cat, acct, trip }) {
   const animationVariants = {
@@ -76,6 +77,19 @@ function AddTranInput({ activeInput, cat, acct, trip }) {
           transition={{ duration: 0.1 }}
         >
           <AddTranInputAmt />
+        </motion.div>
+      )}
+      {activeInput === "time" && (
+        <motion.div
+          key="time"
+          className="w-full"
+          variants={animationVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 0.1 }}
+        >
+          <AddTranInputTime />
         </motion.div>
       )}
     </AnimatePresence>

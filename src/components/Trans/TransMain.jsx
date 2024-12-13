@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import Tag from "../common/Tag";
 import TransMainDetail from "./TransMainDetail";
 
 function TransMain({ trans }) {

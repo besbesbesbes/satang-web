@@ -8,7 +8,7 @@ import AddTranInputTrip from "./AddTranInputTrip";
 import AddTranInputTime from "./AddTranInputTime";
 import AddTranInputDebt from "./AddTranInputDebt";
 
-function AddTranInput({ activeInput, cat, acct, trip }) {
+function AddTranInput({ activeInput, cat, acct, trip, setInput }) {
   const animationVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -26,7 +26,7 @@ function AddTranInput({ activeInput, cat, acct, trip }) {
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputType />
+          <AddTranInputType setInput={setInput} />
         </motion.div>
       )}
       {activeInput === "acct" && (

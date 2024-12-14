@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import useMainStore from "../../stores/mainStore";
 import consoleLog from "../../utils/consoleLog";
 import AddTranInput from "./AddTranInput";
@@ -16,7 +17,31 @@ function AddTran() {
   const [cat, setCat] = useState([]);
   const [acct, setAcct] = useState([]);
   const [trip, setTrip] = useState([]);
-
+  const [input, setInput] = useState({
+    time: "",
+    type: "EXPENSE",
+    category: "",
+    trip: "",
+    acct: {},
+    memo: "",
+  });
+  const typeMapping = {
+    EXPENSE: { icon: "ExpenseIcon", color: "7", txt: "Expense" },
+    INCOME: { icon: "IncomeIcon", color: "2", txt: "Income" },
+    TRANSFER: { icon: "TransferIcon", color: "10", txt: "Transfer" },
+    ADJUST: { icon: "AdjustIcon", color: "9", txt: "Adjust" },
+  };
+  const {
+    icon: typeIcon,
+    color: typeColor,
+    txt: typeTxt,
+  } = typeMapping[input.type] || {};
+  console.log(input.type, typeIcon, typeColor, typeTxt);
+  const animationVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
+  };
   const toggleInput = (inputName) => {
     setActiveInput((prev) => (prev === inputName ? null : inputName));
   };
@@ -50,6 +75,12 @@ function AddTran() {
       console.log(err?.response?.data?.error || err.message);
     }
   };
+  const hdlInputChange = (e) => {
+    const { name, value } = e.target;
+    setInput((prev) => ({ ...prev, [name]: value }));
+    console.log(input);
+  };
+
   useEffect(() => {
     if (curPage !== 0) {
       setActiveInput(null);
@@ -75,9 +106,25 @@ function AddTran() {
         {/* type */}
         <div className=" w-full grid grid-cols-4 items-center">
           <div className="text-right font-bold px-1">Type :</div>
-          <div className="px-1 col-start-2 col-end-5  border-b border-prim-4">
-            Expense
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              className="px-1 col-start-2 col-end-5  border-b border-prim-4"
+              key={typeTxt}
+              variants={animationVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: 0.1 }}
+            >
+              <Tag
+                icon={typeIcon}
+                txt={typeTxt}
+                color={typeColor}
+                isShowTxt={true}
+                isOutline={false}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
         {/* category */}
         <div className=" w-full grid grid-cols-4 items-center">
@@ -105,7 +152,7 @@ function AddTran() {
           </div>
         </div>
         {/* list */}
-        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1 ">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1 border-b border-prim-4 ">
           <div className="pr-2 text-right col-start-1 col-end-2">SCB</div>
           <div className="px-1 text-right  text-acct-2"></div>
           <div className="px-1 text-right  text-acct-7">
@@ -115,7 +162,7 @@ function AddTran() {
             <Tag icon="DeleteIcon" color={7} isShowTxt={false} />
           </div>
         </div>
-        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center gap-1 px-1">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center gap-1 px-1 border-b border-prim-4">
           <div className="pr-2 text-right col-start-1 col-end-2">KBank</div>
           <div className="px-1 text-right  text-acct-2">
             {formatNumber(1234.0, "plus")}
@@ -126,7 +173,7 @@ function AddTran() {
           </div>
         </div>
         {/* total amt */}
-        <div className=" w-full h-[35px] grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 border-t border-prim-4 ">
+        <div className=" w-full h-[35px] grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 border-b border-prim-4">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Total
           </div>
@@ -144,8 +191,10 @@ function AddTran() {
         <div className=" w-full grid grid-cols-4 items-center">
           <div className="text-right font-bold px-1">Memo :</div>
           <input
+            name="memo"
             className="px-1 col-start-2 col-end-5  border-b border-prim-4"
-            value="Test Memo"
+            value={input.memo}
+            onChange={hdlInputChange}
           />
         </div>
         <div className="text-xs flex gap-2">
@@ -157,6 +206,7 @@ function AddTran() {
           <button onClick={() => toggleInput("trip")}>Trip</button>
           <button onClick={() => toggleInput("amt")}>Amt</button>
           <button onClick={() => toggleInput("time")}>Time</button>
+          <button onClick={() => console.log(input)}>Input</button>
         </div>
 
         {/* Add more buttons for other inputs as needed */}
@@ -167,6 +217,7 @@ function AddTran() {
         cat={cat}
         acct={acct}
         trip={trip}
+        setInput={setInput}
       />
     </div>
   );

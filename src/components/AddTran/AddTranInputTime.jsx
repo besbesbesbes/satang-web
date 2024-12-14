@@ -40,7 +40,7 @@ function AddTranInputTime() {
   };
 
   return (
-    <div className="w-full h-[140px] bg-prim-6 font-bold grid grid-cols-3 grid-rows-[20px,45px,20px,45px] gap-x-1 p-1">
+    <div className="w-full h-[140px] bg-prim-5 font-bold grid grid-cols-3 grid-rows-[20px,45px,20px,45px] gap-x-1 p-1">
       <div className="h-[20px] text-center text-text-d text-opacity-50 flex justify-center items-center">
         Day
         <UpDownIcon className="w-[16px]" />
@@ -56,7 +56,7 @@ function AddTranInputTime() {
       {/* Date */}
       <div
         ref={dateRef}
-        className="h-[45px] bg-prim-4 rounded-[16px] overflow-auto scroll-container relative"
+        className="h-[45px] bg-prim-6 rounded-[16px] overflow-auto scroll-container relative"
         onScroll={() =>
           handleScroll(
             dateRef,
@@ -80,7 +80,7 @@ function AddTranInputTime() {
       {/* Month */}
       <div
         ref={monthRef}
-        className="h-[45px] bg-prim-4 rounded-[16px] overflow-auto scroll-container"
+        className="h-[45px] bg-prim-6 rounded-[16px] overflow-auto scroll-container"
         onScroll={() => handleScroll(monthRef, months, setCurrentMonth)}
         style={{ scrollSnapType: "y mandatory" }}
       >
@@ -98,7 +98,7 @@ function AddTranInputTime() {
       {/* Year */}
       <div
         ref={yearRef}
-        className="h-[45px] bg-prim-4 rounded-[16px] overflow-auto scroll-container"
+        className="h-[45px] bg-prim-6 rounded-[16px] overflow-auto scroll-container"
         onScroll={() => handleScroll(yearRef, years, setCurrentYear)}
         style={{ scrollSnapType: "y mandatory" }}
       >
@@ -122,7 +122,7 @@ function AddTranInputTime() {
       {/* Hour */}
       <div
         ref={hourRef}
-        className="h-[45px] bg-prim-4 rounded-[16px] overflow-auto scroll-container"
+        className="h-[45px] bg-prim-6 rounded-[16px] overflow-auto scroll-container"
         onScroll={() => handleScroll(hourRef, hours, setCurrentHour)}
         style={{ scrollSnapType: "y mandatory" }}
       >
@@ -140,7 +140,7 @@ function AddTranInputTime() {
       {/* Minute */}
       <div
         ref={minuteRef}
-        className="h-[45px] bg-prim-4 rounded-[16px] overflow-auto scroll-container"
+        className="h-[45px] bg-prim-6 rounded-[16px] overflow-auto scroll-container"
         onScroll={() => handleScroll(minuteRef, minutes, setCurrentMinute)}
         style={{ scrollSnapType: "y mandatory" }}
       >

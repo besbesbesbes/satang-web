@@ -1,10 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import AddTranInputType from "./AddTranInputType";
 import AddTranInputAmt from "./AddTranInputAmt";
-import AddTranInputCat from "./AddTranInputCat";
+import AddTranInputCatEx from "./AddTranInputCatEx";
+import AddTranInputCatIn from "./AddTranInputCatIn";
 import AddTranInputAcct from "./AddTranInputAcct";
 import AddTranInputTrip from "./AddTranInputTrip";
 import AddTranInputTime from "./AddTranInputTime";
+import AddTranInputDebt from "./AddTranInputDebt";
 
 function AddTranInput({ activeInput, cat, acct, trip }) {
   const animationVariants = {
@@ -40,9 +42,9 @@ function AddTranInput({ activeInput, cat, acct, trip }) {
           <AddTranInputAcct acct={acct} />
         </motion.div>
       )}
-      {activeInput === "cat" && (
+      {activeInput === "debt" && (
         <motion.div
-          key="cat"
+          key="debt"
           className="w-full"
           variants={animationVariants}
           initial="hidden"
@@ -50,7 +52,33 @@ function AddTranInput({ activeInput, cat, acct, trip }) {
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputCat cat={cat} />
+          <AddTranInputDebt acct={acct} />
+        </motion.div>
+      )}
+      {activeInput === "cat-ex" && (
+        <motion.div
+          key="cat-ex"
+          className="w-full"
+          variants={animationVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 0.1 }}
+        >
+          <AddTranInputCatEx cat={cat} />
+        </motion.div>
+      )}
+      {activeInput === "cat-in" && (
+        <motion.div
+          key="cat-in"
+          className="w-full"
+          variants={animationVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 0.1 }}
+        >
+          <AddTranInputCatIn cat={cat} />
         </motion.div>
       )}
       {activeInput === "trip" && (

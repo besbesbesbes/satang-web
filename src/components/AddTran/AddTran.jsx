@@ -94,7 +94,7 @@ function AddTran() {
           </div>
         </div>
         {/* acct & amt */}
-        <div className=" w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center border border-prim-4 rounded-full px-1 gap-1">
+        <div className=" w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center bg-prim-5 border border-prim-4 rounded-full px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Account
           </div>
@@ -105,7 +105,7 @@ function AddTran() {
           </div>
         </div>
         {/* list */}
-        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1 ">
           <div className="pr-2 text-right col-start-1 col-end-2">SCB</div>
           <div className="px-1 text-right  text-acct-2"></div>
           <div className="px-1 text-right  text-acct-7">
@@ -115,7 +115,7 @@ function AddTran() {
             <Tag icon="DeleteIcon" color={7} isShowTxt={false} />
           </div>
         </div>
-        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center gap-1 px-1">
           <div className="pr-2 text-right col-start-1 col-end-2">KBank</div>
           <div className="px-1 text-right  text-acct-2">
             {formatNumber(1234.0, "plus")}
@@ -126,7 +126,7 @@ function AddTran() {
           </div>
         </div>
         {/* total amt */}
-        <div className=" w-full h-[35px] grid grid-cols-[repeat(3,_1fr)_25px] items-center border-t border-prim-4  px-1">
+        <div className=" w-full h-[35px] grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 border-t border-prim-4 ">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Total
           </div>
@@ -151,7 +151,9 @@ function AddTran() {
         <div className="text-xs flex gap-2">
           <button onClick={() => toggleInput("type")}>Type</button>
           <button onClick={() => toggleInput("acct")}>Acct</button>
-          <button onClick={() => toggleInput("cat")}>Cat</button>
+          <button onClick={() => toggleInput("debt")}>Debt</button>
+          <button onClick={() => toggleInput("cat-ex")}>Cat-Ex</button>
+          <button onClick={() => toggleInput("cat-in")}>Cat-In</button>
           <button onClick={() => toggleInput("trip")}>Trip</button>
           <button onClick={() => toggleInput("amt")}>Amt</button>
           <button onClick={() => toggleInput("time")}>Time</button>

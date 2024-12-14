@@ -198,6 +198,24 @@ export function UpDownIcon(props) {
     </svg>
   );
 }
+export function SkipIcon(props) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M19 5v14M7.6 17.92l5.838-4.67c.534-.428.801-.641.898-.9a1 1 0 000-.7c-.097-.259-.364-.472-.898-.9L7.6 6.08C6.767 5.414 6.35 5.08 6 5.08a1 1 0 00-.783.377C5 5.73 5 6.263 5 7.329v9.342c0 1.066 0 1.599.218 1.872a1 1 0 00.783.376c.35 0 .766-.333 1.599-.999z"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 export const icons = {
   LoginIcon,
   SatangIcon,
@@ -210,4 +228,5 @@ export const icons = {
   AddIcon,
   TripIcon,
   UpDownIcon,
+  SkipIcon,
 };

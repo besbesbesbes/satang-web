@@ -150,7 +150,7 @@ function AddTranInputTime() {
             className="w-full h-[45px] flex justify-center items-center"
             style={{ scrollSnapAlign: "start" }}
           >
-            {minute}
+            {minute.toString().padStart(2, "0")}
           </div>
         ))}
       </div>
@@ -158,7 +158,9 @@ function AddTranInputTime() {
       {/* Current Selection */}
       <div className="h-[45px] bg-acct-6 text-text-l flex justify-center items-center rounded-[16px] flex-col">
         <div>{`${currentDate} ${currentMonth} ${currentYear} `}</div>
-        <div>{`${currentHour}:${currentMinute}`}</div>
+        <div>{`${currentHour}:${currentMinute
+          .toString()
+          .padStart(2, "0")}`}</div>
       </div>
     </div>
   );

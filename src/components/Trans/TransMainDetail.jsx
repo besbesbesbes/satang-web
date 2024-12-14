@@ -91,6 +91,12 @@ function TransMainDetail({ tran }) {
                 </div>
               </div>
               {/* transSub */}
+              <div className="w-full grid grid-cols-4 items-center auto-rows-min text-left text-xs font-bold text-text-d opacity-40 rounded-full">
+                <p className="pl-2">Account</p>
+                <p className="pl-2">Category</p>
+                <p className="pl-2">Trip</p>
+                <p className="text-right pr-1">Amount</p>
+              </div>
               {tran?.TransSub.map((el, idx) => (
                 <div key={idx} className="w-full">
                   <TransMainDetailSub transSub={el} />

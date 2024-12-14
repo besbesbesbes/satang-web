@@ -3,6 +3,7 @@ import useMainStore from "../../stores/mainStore";
 import consoleLog from "../../utils/consoleLog";
 import AddTranInput from "./AddTranInput";
 import Tag from "../common/Tag";
+import formatNumber from "../../utils/formatNumber";
 import {
   getInputCatApi,
   getInputAcctApi,
@@ -93,36 +94,50 @@ function AddTran() {
           </div>
         </div>
         {/* acct & amt */}
-        <div className=" w-full h-[35px]  grid grid-cols-3 items-center border border-prim-4 rounded-full px-1">
+        <div className=" w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center border border-prim-4 rounded-full px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Account
           </div>
           <div className="px-1 text-right font-bold">Amount</div>
+          <div></div>
           <div className="flex justify-end font-bold">
-            <Tag icon="AddIcon" color={2} txt="Split" isShowTxt={true} />
+            <Tag icon="AddIcon" color={2} txt="Split" isShowTxt={false} />
           </div>
         </div>
         {/* list */}
-        <div className=" w-full grid grid-cols-3 items-center px-1">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2">SCB</div>
-          <div className="px-1 text-right">1,234.00</div>
+          <div className="px-1 text-right  text-acct-2"></div>
+          <div className="px-1 text-right  text-acct-7">
+            {formatNumber(1234.0, "minus")}
+          </div>
           <div className="w-full flex justify-end">
             <Tag icon="DeleteIcon" color={7} isShowTxt={false} />
           </div>
         </div>
-        <div className=" w-full grid grid-cols-3 items-center px-1">
+        <div className=" w-full grid grid-cols-[repeat(3,_1fr)_25px] items-center px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2">KBank</div>
-          <div className="px-1 text-right">1,234.00</div>
+          <div className="px-1 text-right  text-acct-2">
+            {formatNumber(1234.0, "plus")}
+          </div>
+          <div className="px-1 text-right  text-acct-7"></div>
           <div className="w-full flex justify-end">
             <Tag icon="DeleteIcon" color={7} isShowTxt={false} />
           </div>
         </div>
         {/* total amt */}
-        <div className=" w-full h-[35px] grid grid-cols-3 items-center border-t border-prim-4  px-1">
+        <div className=" w-full h-[35px] grid grid-cols-[repeat(3,_1fr)_25px] items-center border-t border-prim-4  px-1">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Total
           </div>
-          <div className="px-1 text-right font-bold">3,333.33</div>
+          <div className="px-1 text-right font-bold text-acct-2">
+            {" "}
+            {formatNumber(11234.0, "plus")}
+          </div>
+          <div className="px-1 text-right font-bold text-acct-7">
+            {" "}
+            {formatNumber(11234.0, "minus")}
+          </div>
           <div className="flex justify-end font-bold"></div>
         </div>
         {/* memo */}
@@ -133,13 +148,13 @@ function AddTran() {
             value="Test Memo"
           />
         </div>
-        <div className="text-xs">
-          <button onClick={() => toggleInput("type")}>Input Type</button>
-          <button onClick={() => toggleInput("acct")}>Input Acct</button>
-          <button onClick={() => toggleInput("cat")}>Input Cat</button>
-          <button onClick={() => toggleInput("trip")}>Input Trip</button>
-          <button onClick={() => toggleInput("amt")}>Input Amt</button>
-          <button onClick={() => toggleInput("time")}>Input Time</button>
+        <div className="text-xs flex gap-2">
+          <button onClick={() => toggleInput("type")}>Type</button>
+          <button onClick={() => toggleInput("acct")}>Acct</button>
+          <button onClick={() => toggleInput("cat")}>Cat</button>
+          <button onClick={() => toggleInput("trip")}>Trip</button>
+          <button onClick={() => toggleInput("amt")}>Amt</button>
+          <button onClick={() => toggleInput("time")}>Time</button>
         </div>
 
         {/* Add more buttons for other inputs as needed */}

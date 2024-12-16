@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 
-function AddTranAnimate({ typeTxt, activeInput, children }) {
+function AddTranAnimate({ keyChange, children }) {
   const animationVariants = {
     hidden: { opacity: 0, y: -10 },
     visible: { opacity: 1, y: 0 },
@@ -9,7 +9,7 @@ function AddTranAnimate({ typeTxt, activeInput, children }) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
-        key={typeTxt}
+        key={keyChange}
         variants={animationVariants}
         initial="hidden"
         animate="visible"

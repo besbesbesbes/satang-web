@@ -1,18 +1,12 @@
 import { useRef, useState } from "react";
 import { UpDownIcon } from "../../icons/mainIcon";
 
-function AddTranInputTime() {
+function AddTranInputTime({ input, setInput }) {
   const dateRef = useRef(null);
   const monthRef = useRef(null);
   const yearRef = useRef(null);
   const hourRef = useRef(null);
   const minuteRef = useRef(null);
-
-  const [currentDate, setCurrentDate] = useState(1);
-  const [currentMonth, setCurrentMonth] = useState("Jan");
-  const [currentYear, setCurrentYear] = useState(2020);
-  const [currentHour, setCurrentHour] = useState(0);
-  const [currentMinute, setCurrentMinute] = useState(0);
 
   const months = [
     "Jan",
@@ -28,6 +22,12 @@ function AddTranInputTime() {
     "Nov",
     "Dec",
   ];
+  const [currentDate, setCurrentDate] = useState(input.time[0]);
+  const [currentMonth, setCurrentMonth] = useState(months[input.time[1] - 1]);
+  const [currentYear, setCurrentYear] = useState(input.time[2]);
+  const [currentHour, setCurrentHour] = useState(input.time[3]);
+  const [currentMinute, setCurrentMinute] = useState(input.time[4]);
+
   const years = Array.from({ length: 11 }, (_, i) => 2020 + i);
   const hours = Array.from({ length: 24 }, (_, i) => i);
   const minutes = Array.from({ length: 60 }, (_, i) => i);
@@ -76,7 +76,6 @@ function AddTranInputTime() {
           </div>
         ))}
       </div>
-
       {/* Month */}
       <div
         ref={monthRef}
@@ -94,7 +93,6 @@ function AddTranInputTime() {
           </div>
         ))}
       </div>
-
       {/* Year */}
       <div
         ref={yearRef}
@@ -136,7 +134,6 @@ function AddTranInputTime() {
           </div>
         ))}
       </div>
-
       {/* Minute */}
       <div
         ref={minuteRef}
@@ -154,13 +151,13 @@ function AddTranInputTime() {
           </div>
         ))}
       </div>
-
       {/* Current Selection */}
       <div className="h-[45px] bg-acct-6 text-text-l flex justify-center items-center rounded-[16px] flex-col">
         <div>{`${currentDate} ${currentMonth} ${currentYear} `}</div>
         <div>{`${currentHour}:${currentMinute
           .toString()
           .padStart(2, "0")}`}</div>
+        {/* <div onClick={() => console.log(input.time)}>Time</div> */}
       </div>
     </div>
   );

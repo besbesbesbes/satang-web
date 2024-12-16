@@ -12,6 +12,30 @@ import {
   getInputTripApi,
 } from "../../apis/addtran-api";
 
+function getCurrentTime() {
+  const now = new Date();
+  const dd = String(now.getDate()).padStart(2, "0");
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const yy = String(now.getFullYear());
+  const HH = String(now.getHours()).padStart(2, "0");
+  const MM = String(now.getMinutes()).padStart(2, "0");
+  return [dd, mm, yy, HH, MM];
+}
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 function AddTran() {
   const curPage = useMainStore((state) => state.curPage);
   const [activeInput, setActiveInput] = useState(null);
@@ -19,7 +43,7 @@ function AddTran() {
   const [acct, setAcct] = useState([]);
   const [trip, setTrip] = useState([]);
   const [input, setInput] = useState({
-    time: "",
+    time: getCurrentTime(),
     type: "EXPENSE",
     category: "",
     trip: "",
@@ -75,8 +99,8 @@ function AddTran() {
     setInput((prev) => ({ ...prev, [name]: value }));
     console.log(input);
   };
-  const hdlSelectedType = () => {
-    toggleInput("type");
+  const hdlSelectedInput = (val) => {
+    toggleInput(val);
   };
 
   useEffect(() => {
@@ -89,28 +113,48 @@ function AddTran() {
     getInputAcct();
     getInputTrip();
     toggleInput("type");
+    setInput({
+      time: getCurrentTime(),
+      type: "EXPENSE",
+      category: "",
+      trip: "",
+      acct: {},
+      memo: "",
+    });
   }, [curPage]);
   return (
     <div className="w-full h-[calc(100svh-80px)] bg-prim-6 absolute flex flex-col justify-between">
       {/* detail */}
       <div className="w-full h-full flex flex-col bg-prim-6 pt-5 overflow-auto text-base gap-3 px-2">
+        {/* <button onClick={() => console.log(input.time)}>time</button> */}
         {/* time */}
-        <div className=" w-full grid grid-cols-4 items-center">
+        <div
+          className={`w-full grid grid-cols-4 items-center ${
+            activeInput === "time" && "animate-blink-seleted"
+          }`}
+          onClick={() => hdlSelectedInput("time")}
+        >
           <div className="text-right font-bold px-1">Time :</div>
           <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
-            13-Dec-24 15:30
+            <AddTranAnimate keyChange={input.time}>
+              <div className="w-fit">
+                {`${input.time[0]}-${months[input.time[1] - 1]}-${
+                  input.time[2]
+                }, ${input.time[3]}:${input.time[4]}`}
+              </div>
+            </AddTranAnimate>
           </div>
         </div>
         {/* type */}
         <div
-          className={`w-full grid grid-cols-4 items-center  ${
+          className={`w-full grid grid-cols-4 items-center ${
             activeInput === "type" && "animate-blink-seleted"
           }`}
-          onClick={hdlSelectedType}
+          onClick={() => hdlSelectedInput("type")}
         >
           <div className="text-right font-bold px-1">Type :</div>
           <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
-            <AddTranAnimate typeTxt={typeTxt} activeInput={activeInput}>
+            <AddTranAnimate keyChange={typeTxt}>
               <Tag
                 icon={typeIcon}
                 txt={typeTxt}
@@ -213,6 +257,7 @@ function AddTran() {
         acct={acct}
         trip={trip}
         setInput={setInput}
+        input={input}
         toggleInput={toggleInput}
       />
     </div>

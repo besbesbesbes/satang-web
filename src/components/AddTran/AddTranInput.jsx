@@ -8,7 +8,15 @@ import AddTranInputTrip from "./AddTranInputTrip";
 import AddTranInputTime from "./AddTranInputTime";
 import AddTranInputDebt from "./AddTranInputDebt";
 
-function AddTranInput({ activeInput, cat, acct, trip, setInput, toggleInput }) {
+function AddTranInput({
+  activeInput,
+  cat,
+  acct,
+  trip,
+  input,
+  setInput,
+  toggleInput,
+}) {
   const animationVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -117,7 +125,7 @@ function AddTranInput({ activeInput, cat, acct, trip, setInput, toggleInput }) {
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputTime />
+          <AddTranInputTime setInput={setInput} input={input} />
         </motion.div>
       )}
     </AnimatePresence>

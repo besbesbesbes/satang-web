@@ -6,6 +6,15 @@ export default {
       fontFamily: {
         quicksand: ["Quicksand", "Sarabun", "sans-serif"],
       },
+      animation: {
+        "blink-seleted": "blink-seleted 1.5s infinite",
+      },
+      keyframes: {
+        "blink-seleted": {
+          "0%, 100%": { backgroundColor: "rgba(237, 107, 58, 0.1)" },
+          "50%": { backgroundColor: "rgba(237, 107, 58, 0.3)" },
+        },
+      },
       colors: {
         "prim-1": "#333c45",
         "prim-2": "#4e5a65",

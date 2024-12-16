@@ -1,0 +1,25 @@
+import { AnimatePresence, motion } from "framer-motion";
+
+function AddTranAnimate({ typeTxt, activeInput, children }) {
+  const animationVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
+  };
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={typeTxt}
+        variants={animationVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        transition={{ duration: 0.1 }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export default AddTranAnimate;

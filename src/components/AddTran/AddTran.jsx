@@ -5,6 +5,7 @@ import consoleLog from "../../utils/consoleLog";
 import AddTranInput from "./AddTranInput";
 import Tag from "../common/Tag";
 import formatNumber from "../../utils/formatNumber";
+import AddTranAnimate from "./AddTranAnimate";
 import {
   getInputCatApi,
   getInputAcctApi,
@@ -36,12 +37,6 @@ function AddTran() {
     color: typeColor,
     txt: typeTxt,
   } = typeMapping[input.type] || {};
-  console.log(input.type, typeIcon, typeColor, typeTxt);
-  const animationVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
-  };
   const toggleInput = (inputName) => {
     setActiveInput((prev) => (prev === inputName ? null : inputName));
   };
@@ -49,7 +44,7 @@ function AddTran() {
     consoleLog("call getInputCat");
     try {
       const result = await getInputCatApi();
-      console.log(result.data.cat);
+      console.log("getInputCat result : ", result.data.cat);
       setCat(result.data.cat);
     } catch (err) {
       console.log(err?.response?.data?.error || err.message);
@@ -59,7 +54,7 @@ function AddTran() {
     consoleLog("call getInputAcct");
     try {
       const result = await getInputAcctApi();
-      console.log(result.data.acct);
+      console.log("getInputAcct result : ", result.data.acct);
       setAcct(result.data.acct);
     } catch (err) {
       console.log(err?.response?.data?.error || err.message);
@@ -69,7 +64,7 @@ function AddTran() {
     consoleLog("call getInputTrip");
     try {
       const result = await getInputTripApi();
-      console.log(result.data.trip);
+      console.log("getInputTrip result : ", result.data.trip);
       setTrip(result.data.trip);
     } catch (err) {
       console.log(err?.response?.data?.error || err.message);
@@ -79,6 +74,9 @@ function AddTran() {
     const { name, value } = e.target;
     setInput((prev) => ({ ...prev, [name]: value }));
     console.log(input);
+  };
+  const hdlSelectedType = () => {
+    toggleInput("type");
   };
 
   useEffect(() => {
@@ -104,18 +102,15 @@ function AddTran() {
           </div>
         </div>
         {/* type */}
-        <div className=" w-full grid grid-cols-4 items-center">
+        <div
+          className={`w-full grid grid-cols-4 items-center  ${
+            activeInput === "type" && "animate-blink-seleted"
+          }`}
+          onClick={hdlSelectedType}
+        >
           <div className="text-right font-bold px-1">Type :</div>
-          <AnimatePresence mode="wait">
-            <motion.div
-              className="px-1 col-start-2 col-end-5  border-b border-prim-4"
-              key={typeTxt}
-              variants={animationVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{ duration: 0.1 }}
-            >
+          <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
+            <AddTranAnimate typeTxt={typeTxt} activeInput={activeInput}>
               <Tag
                 icon={typeIcon}
                 txt={typeTxt}
@@ -123,8 +118,8 @@ function AddTran() {
                 isShowTxt={true}
                 isOutline={false}
               />
-            </motion.div>
-          </AnimatePresence>
+            </AddTranAnimate>
+          </div>
         </div>
         {/* category */}
         <div className=" w-full grid grid-cols-4 items-center">
@@ -218,6 +213,7 @@ function AddTran() {
         acct={acct}
         trip={trip}
         setInput={setInput}
+        toggleInput={toggleInput}
       />
     </div>
   );

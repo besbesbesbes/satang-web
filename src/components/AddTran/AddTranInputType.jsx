@@ -12,9 +12,10 @@ const Button = ({ txt, color, Icon, onClick }) => (
   </div>
 );
 
-function AddTranInputType({ setInput }) {
+function AddTranInputType({ setInput, toggleInput }) {
   const hdlSelectedType = (txt) => {
     setInput((prev) => ({ ...prev, type: txt }));
+    toggleInput(null);
   };
   return (
     <div className="w-full h-[50px] bg-prim-5 grid grid-cols-3 font-bold gap-1 p-1 ">

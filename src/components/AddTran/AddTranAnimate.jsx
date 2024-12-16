@@ -6,7 +6,6 @@ function AddTranAnimate({ keyChange, children }) {
     visible: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -10 },
   };
-  console.log(keyChange);
   return (
     <AnimatePresence mode="wait">
       <motion.div

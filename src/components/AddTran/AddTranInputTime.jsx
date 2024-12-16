@@ -74,6 +74,29 @@ function AddTranInputTime({ input, setInput, toggleInput }) {
     minuteRef.current.scrollTo(0, 45 * input.time[4]);
   };
 
+  const isValidDate = ([day, month, year]) => {
+    const date = new Date(year, month - 1, day);
+    return date.getDate() === day;
+  };
+
+  useEffect(() => {
+    let [day, month, year] = input.time.slice(0, 3);
+    let updated = false;
+    while (!isValidDate([day, month, year])) {
+      day -= 1;
+      updated = true;
+    }
+    if (updated) {
+      const updatedTime = [day, month, year];
+      setInput((prevInput) => {
+        const newTime = [...prevInput.time];
+        newTime[0] = day;
+        return { ...prevInput, time: newTime };
+      });
+      dateRef.current.scrollTo(0, 45 * (day - 1));
+    }
+  }, [input.time]);
+
   useEffect(() => {
     updateInputButton();
   }, []);

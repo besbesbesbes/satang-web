@@ -14,11 +14,11 @@ import {
 
 function getCurrentTime() {
   const now = new Date();
-  const dd = String(now.getDate()).padStart(2, "0");
-  const mm = String(now.getMonth() + 1).padStart(2, "0");
-  const yy = String(now.getFullYear());
-  const HH = String(now.getHours()).padStart(2, "0");
-  const MM = String(now.getMinutes()).padStart(2, "0");
+  const dd = now.getDate();
+  const mm = now.getMonth() + 1;
+  const yy = now.getFullYear();
+  const HH = now.getHours();
+  const MM = now.getMinutes();
   return [dd, mm, yy, HH, MM];
 }
 const months = [
@@ -136,13 +136,11 @@ function AddTran() {
         >
           <div className="text-right font-bold px-1">Time :</div>
           <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
-            <AddTranAnimate keyChange={input.time}>
-              <div className="w-fit">
-                {`${input.time[0]}-${months[input.time[1] - 1]}-${
-                  input.time[2]
-                }, ${input.time[3]}:${input.time[4]}`}
-              </div>
-            </AddTranAnimate>
+            <div className="w-fit">
+              {`${input.time[0]}-${months[input.time[1] - 1]}-${
+                input.time[2]
+              }, ${input.time[3]}:${input.time[4].toString().padStart(2, "0")}`}
+            </div>
           </div>
         </div>
         {/* type */}

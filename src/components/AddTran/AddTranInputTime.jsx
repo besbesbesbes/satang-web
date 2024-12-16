@@ -1,7 +1,17 @@
 import { useEffect, useRef } from "react";
 import { UpDownIcon } from "../../icons/mainIcon";
 
-function AddTranInputTime({ input, setInput }) {
+function getCurrentTime() {
+  const now = new Date();
+  const dd = now.getDate();
+  const mm = now.getMonth() + 1;
+  const yy = now.getFullYear();
+  const HH = now.getHours();
+  const MM = now.getMinutes();
+  return [dd, mm, yy, HH, MM];
+}
+
+function AddTranInputTime({ input, setInput, toggleInput }) {
   const dateRef = useRef(null);
   const monthRef = useRef(null);
   const yearRef = useRef(null);
@@ -48,12 +58,24 @@ function AddTranInputTime({ input, setInput }) {
     }
   };
 
-  useEffect(() => {
+  const useNow = () => {
+    setInput((prevInput) => ({
+      ...prevInput,
+      time: getCurrentTime(),
+    }));
+    toggleInput(null);
+  };
+
+  const updateInputButton = () => {
     dateRef.current.scrollTo(0, 45 * (input.time[0] - 1));
     monthRef.current.scrollTo(0, 45 * input.time[1]);
     yearRef.current.scrollTo(0, 45 * (input.time[2] - 2020));
     hourRef.current.scrollTo(0, 45 * input.time[3]);
     minuteRef.current.scrollTo(0, 45 * input.time[4]);
+  };
+
+  useEffect(() => {
+    updateInputButton();
   }, []);
 
   return (
@@ -133,7 +155,7 @@ function AddTranInputTime({ input, setInput }) {
       <div className="h-[20px] text-center text-text-d text-opacity-50 flex justify-center items-center">
         Minute <UpDownIcon className="w-[16px]" />
       </div>
-      <div className="h-[20px] text-center text-acct-6">Selected Date</div>
+      <div className="h-[20px] text-center text-acct-6"></div>
       {/* Hour */}
       <div
         ref={hourRef}
@@ -170,13 +192,8 @@ function AddTranInputTime({ input, setInput }) {
       </div>
       {/* Current Selection */}
       <div className="h-[45px] bg-acct-6 text-text-l flex justify-center items-center rounded-[16px] flex-col">
-        {/* <div>{`${input.time[0]} ${months[input.time[1] - 1] || "Jan"} ${
-          input.time[2]
-        }`}</div>
-        <div>{`${input.time[3]}:${input.time[4]
-          .toString()
-          .padStart(2, "0")}`}</div> */}
-        <button onClick={() => console.log(input.time)}>Time</button>
+        <div onClick={useNow}>Use Now</div>
+        {/* <button onClick={() => console.log(input.time)}>Time</button> */}
       </div>
     </div>
   );

@@ -125,7 +125,11 @@ function AddTranInput({
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputTime setInput={setInput} input={input} />
+          <AddTranInputTime
+            setInput={setInput}
+            input={input}
+            toggleInput={toggleInput}
+          />
         </motion.div>
       )}
     </AnimatePresence>

@@ -2,7 +2,7 @@ import { SettingIcon } from "../../icons/mainIcon";
 import { ExpenseIcon, IncomeIcon } from "../../icons/catIcon";
 import InputButton from "../common/InputButton";
 
-function AddTranInputCatIn({ cat }) {
+function AddTranInputCatIn({ cat, toggleInput }) {
   const length = cat.filter((el) => el.type === "INCOME").length;
   let h_box = length <= 0 ? 52 : length <= 3 ? 102 : length <= 6 ? 152 : 200;
   return (
@@ -10,7 +10,10 @@ function AddTranInputCatIn({ cat }) {
       className={`w-full h-[${h_box}px] bg-prim-5 grid grid-cols-3 auto-rows-min font-bold gap-1 p-1 overflow-y-auto shadow-[0_-5px_5px_rgba(0,0,0,0.1)]`}
     >
       {/* expense */}
-      <div className="h-[45px] bg-prim-6 font-bold flex justify-start items-center gap-1 rounded-[16px] pl-2 border border-acct-7">
+      <div
+        className="h-[45px] bg-prim-6 font-bold flex justify-start items-center gap-1 rounded-[16px] pl-2 border border-acct-7"
+        onClick={() => toggleInput("cat-ex")}
+      >
         <ExpenseIcon
           className={`w-[25px] h-[25px] bg-acct-7 text-text-l p-1 rounded-full`}
         />

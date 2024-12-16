@@ -73,7 +73,7 @@ function AddTranInput({
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputCatEx cat={cat} />
+          <AddTranInputCatEx cat={cat} toggleInput={toggleInput} />
         </motion.div>
       )}
       {activeInput === "cat-in" && (
@@ -86,7 +86,7 @@ function AddTranInput({
           exit="exit"
           transition={{ duration: 0.1 }}
         >
-          <AddTranInputCatIn cat={cat} />
+          <AddTranInputCatIn cat={cat} toggleInput={toggleInput} />
         </motion.div>
       )}
       {activeInput === "trip" && (

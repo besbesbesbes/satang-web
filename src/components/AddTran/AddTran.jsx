@@ -45,7 +45,7 @@ function AddTran() {
   const [input, setInput] = useState({
     time: getCurrentTime(),
     type: "EXPENSE",
-    category: "",
+    cat: "",
     trip: "",
     acct: {},
     memo: "",
@@ -116,7 +116,7 @@ function AddTran() {
     setInput({
       time: getCurrentTime(),
       type: "EXPENSE",
-      category: "",
+      cat: "",
       trip: "",
       acct: {},
       memo: "",
@@ -126,7 +126,7 @@ function AddTran() {
     <div className="w-full h-[calc(100svh-80px)] bg-prim-6 absolute flex flex-col justify-between">
       {/* detail */}
       <div className="w-full h-full flex flex-col bg-prim-6 pt-5 overflow-auto text-base gap-3 px-2">
-        {/* <button onClick={() => console.log(input.time)}>time</button> */}
+        <button onClick={() => console.log(input)}>input</button>
         {/* time */}
         <div
           className={`w-full grid grid-cols-4 items-center ${
@@ -163,20 +163,37 @@ function AddTran() {
             </AddTranAnimate>
           </div>
         </div>
-        {/* category */}
-        <div className=" w-full grid grid-cols-4 items-center">
-          <div className="text-right font-bold px-1">Category :</div>
-          <div className="px-1 col-start-2 col-end-5  border-b border-prim-4">
-            Foods
-          </div>
-        </div>
-        {/* trip */}
-        <div className=" w-full grid grid-cols-4 items-center">
-          <div className="text-right font-bold px-1">Trip :</div>
-          <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
-            Trip1
-          </div>
-        </div>
+        {input.type !== "TRANSFER" && (
+          <AddTranAnimate keyChange={input.type}>
+            <div className=" flex flex-col gap-3">
+              {/* category */}
+              <div
+                className={`w-full grid grid-cols-4 items-center ${
+                  (activeInput === "cat-ex" || activeInput === "cat-in") &&
+                  "animate-blink-seleted"
+                } && "animate-blink-seleted"
+                }`}
+                onClick={() =>
+                  hdlSelectedInput(
+                    input.type === "EXPENSE" ? "cat-ex" : "cat-in"
+                  )
+                }
+              >
+                <div className="text-right font-bold px-1">Category :</div>
+                <div className="px-1 col-start-2 col-end-5  border-b border-prim-4">
+                  Foods
+                </div>
+              </div>
+              {/* trip */}
+              <div className=" w-full grid grid-cols-4 items-center">
+                <div className="text-right font-bold px-1">Trip :</div>
+                <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
+                  Trip1
+                </div>
+              </div>
+            </div>
+          </AddTranAnimate>
+        )}
         {/* acct & amt */}
         <div className=" w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center bg-prim-5 border border-prim-4 rounded-full px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">

@@ -58,12 +58,12 @@ function AddTranInputTime({ input, setInput, toggleInput }) {
     }
   };
 
-  const useNow = () => {
+  const currentTime = () => {
     setInput((prevInput) => ({
       ...prevInput,
       time: getCurrentTime(),
     }));
-    toggleInput(null);
+    toggleInput("type");
   };
 
   const updateInputButton = () => {
@@ -215,7 +215,7 @@ function AddTranInputTime({ input, setInput, toggleInput }) {
       </div>
       {/* Current Selection */}
       <div className="h-[45px] bg-acct-6 text-text-l flex justify-center items-center rounded-[16px] flex-col">
-        <div onClick={useNow}>Use Now</div>
+        <div onClick={currentTime}>Current Time</div>
         {/* <button onClick={() => console.log(input.time)}>Time</button> */}
       </div>
     </div>

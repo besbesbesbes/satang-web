@@ -2,7 +2,7 @@ import { SettingIcon } from "../../icons/mainIcon";
 import { ExpenseIcon, IncomeIcon } from "../../icons/catIcon";
 import InputButton from "../common/InputButton";
 
-function AddTranInputCatEx({ cat, toggleInput }) {
+function AddTranInputCatEx({ cat, setInput, toggleInput }) {
   const length = cat.filter((el) => el.type === "EXPENSE").length;
   let h_box = length <= 0 ? 52 : length <= 3 ? 102 : length <= 6 ? 152 : 200;
   return (
@@ -38,10 +38,14 @@ function AddTranInputCatEx({ cat, toggleInput }) {
         (el, idx) =>
           el.type === "EXPENSE" && (
             <InputButton
+              keyId={el.id}
               key={idx}
               txt={el.name}
               color={el.color}
               icon={el.icon}
+              setInput={setInput}
+              type="cat"
+              toggleInput={toggleInput}
             />
           )
       )}

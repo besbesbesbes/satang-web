@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import useMainStore from "../../stores/mainStore";
 import consoleLog from "../../utils/consoleLog";
 import AddTranInput from "./AddTranInput";
 import Tag from "../common/Tag";
 import formatNumber from "../../utils/formatNumber";
 import AddTranAnimate from "./AddTranAnimate";
+import { SaveIcon } from "../../icons/mainIcon";
 import {
   getInputCatApi,
   getInputAcctApi,
@@ -94,10 +94,9 @@ function AddTran() {
       console.log(err?.response?.data?.error || err.message);
     }
   };
-  const hdlInputChange = (e) => {
+  const hdlInputMemo = (e) => {
     const { name, value } = e.target;
     setInput((prev) => ({ ...prev, [name]: value }));
-    console.log(input);
   };
   const hdlSelectedInput = (val) => {
     toggleInput(val);
@@ -125,11 +124,11 @@ function AddTran() {
   return (
     <div className="w-full h-[calc(100svh-80px)] bg-prim-6 absolute flex flex-col justify-between">
       {/* detail */}
-      <div className="w-full h-full flex flex-col bg-prim-6 pt-5 overflow-auto text-base gap-3 px-2">
+      <div className="w-full h-full flex flex-col bg-prim-6 pt-5 overflow-auto text-base gap-1 px-2">
         <button onClick={() => console.log(input)}>input</button>
         {/* time */}
         <div
-          className={`w-full grid grid-cols-4 items-center ${
+          className={`w-full h-[35px] grid grid-cols-4 items-center ${
             activeInput === "time" && "animate-blink-seleted"
           }`}
           onClick={() => hdlSelectedInput("time")}
@@ -145,7 +144,7 @@ function AddTran() {
         </div>
         {/* type */}
         <div
-          className={`w-full grid grid-cols-4 items-center ${
+          className={`w-full h-[35px] grid grid-cols-4 items-center ${
             activeInput === "type" && "animate-blink-seleted"
           }`}
           onClick={() => hdlSelectedInput("type")}
@@ -165,13 +164,13 @@ function AddTran() {
         </div>
         {input.type !== "TRANSFER" && (
           <AddTranAnimate keyChange={input.type}>
-            <div className=" flex flex-col gap-3">
+            <div className=" flex flex-col gap-1">
               {/* category */}
               <div
-                className={`w-full grid grid-cols-4 items-center ${
+                className={`w-full h-[35px] grid grid-cols-4 items-center ${
                   (activeInput === "cat-ex" || activeInput === "cat-in") &&
                   "animate-blink-seleted"
-                } && "animate-blink-seleted"
+                } 
                 }`}
                 onClick={() =>
                   hdlSelectedInput(
@@ -181,21 +180,61 @@ function AddTran() {
               >
                 <div className="text-right font-bold px-1">Category :</div>
                 <div className="px-1 col-start-2 col-end-5  border-b border-prim-4">
-                  Foods
+                  {!input.cat ? (
+                    <div className="h-[35px]"> </div>
+                  ) : (
+                    <AddTranAnimate
+                      keyChange={cat.filter((el) => el.id == input.cat)[0].id}
+                    >
+                      <Tag
+                        icon={`Icon${
+                          cat.filter((el) => el.id == input.cat)[0].icon
+                        }`}
+                        txt={cat.filter((el) => el.id == input.cat)[0].name}
+                        color={cat.filter((el) => el.id == input.cat)[0].color}
+                        isShowTxt={true}
+                        isOutline={false}
+                      />
+                    </AddTranAnimate>
+                  )}
                 </div>
               </div>
               {/* trip */}
-              <div className=" w-full grid grid-cols-4 items-center">
+              <div
+                className={`w-full h-[35px] grid grid-cols-4 items-center ${
+                  activeInput === "trip" && "animate-blink-seleted"
+                }
+                }`}
+                onClick={() => hdlSelectedInput("trip")}
+              >
                 <div className="text-right font-bold px-1">Trip :</div>
                 <div className="px-1 col-start-2 col-end-5 border-b border-prim-4">
-                  Trip1
+                  {!input.trip ? (
+                    <div className="h-[35px]"> </div>
+                  ) : (
+                    <AddTranAnimate
+                      keyChange={trip.filter((el) => el.id == input.trip)[0].id}
+                    >
+                      <Tag
+                        icon={`Icon${
+                          trip.filter((el) => el.id == input.trip)[0].icon
+                        }`}
+                        txt={trip.filter((el) => el.id == input.trip)[0].name}
+                        color={
+                          trip.filter((el) => el.id == input.trip)[0].color
+                        }
+                        isShowTxt={true}
+                        isOutline={false}
+                      />
+                    </AddTranAnimate>
+                  )}
                 </div>
               </div>
             </div>
           </AddTranAnimate>
         )}
         {/* acct & amt */}
-        <div className=" w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center bg-prim-5 border border-prim-4 rounded-full px-1 gap-1">
+        <div className="mt-1 w-full h-[35px]  grid grid-cols-[repeat(3,_1fr)_25px]  items-center bg-prim-5 border border-prim-4 rounded-full px-1 gap-1">
           <div className="pr-2 text-right col-start-1 col-end-2 font-bold">
             Account
           </div>
@@ -242,16 +281,25 @@ function AddTran() {
           <div className="flex justify-end font-bold"></div>
         </div>
         {/* memo */}
-        <div className=" w-full grid grid-cols-4 items-center">
+        <div className="w-full h-[35px] grid grid-cols-4 items-center">
           <div className="text-right font-bold px-1">Memo :</div>
           <input
             name="memo"
-            className="px-1 col-start-2 col-end-5  border-b border-prim-4"
+            className="h-[35px] px-1 col-start-2 col-end-5 border-b border-prim-4 focus:outline-none"
             value={input.memo}
-            onChange={hdlInputChange}
+            onChange={hdlInputMemo}
+            onFocus={() => toggleInput(null)}
           />
         </div>
-        <div className="text-xs flex gap-2">
+        {/* save and delete button */}
+        <div className="w-full mt-2 justify-center flex gap-2">
+          <button className="h-[35px] bg-acct-6 text-text-l font-bold px-3 rounded-[16px] flex gap-1 justify-center items-center">
+            <SaveIcon className="w-[25px] h-[25px]" />
+            Save
+          </button>
+        </div>
+
+        {/* <div className="text-xs flex gap-2">
           <button onClick={() => toggleInput("type")}>Type</button>
           <button onClick={() => toggleInput("acct")}>Acct</button>
           <button onClick={() => toggleInput("debt")}>Debt</button>
@@ -261,7 +309,7 @@ function AddTran() {
           <button onClick={() => toggleInput("amt")}>Amt</button>
           <button onClick={() => toggleInput("time")}>Time</button>
           <button onClick={() => console.log(input)}>Input</button>
-        </div>
+        </div> */}
 
         {/* Add more buttons for other inputs as needed */}
       </div>

@@ -11,7 +11,7 @@ export default {
       },
       keyframes: {
         "blink-seleted": {
-          "0%, 100%": { backgroundColor: "rgba(237, 107, 58, 0.1)" },
+          "0%, 100%": { backgroundColor: "rgba(237, 107, 58, 0)" },
           "50%": { backgroundColor: "rgba(237, 107, 58, 0.3)" },
         },
       },
